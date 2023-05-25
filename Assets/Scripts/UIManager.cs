@@ -8,13 +8,14 @@ public class UIManager : MonoBehaviour
 
     public Text gameovertext;
     Canvas canvas;
-    CameraController cameraController;
+    //CameraController cameraController;
 
     void Start()
     {
+        Debug.Log("start again");
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
-        cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        //cameraController = GameObject.Find("Left Main Camera").GetComponent<CameraController>();
     }
 
     void Update()
@@ -26,7 +27,7 @@ public class UIManager : MonoBehaviour
     {
         gameovertext.text = "GAME\nOVER";
         canvas.enabled = true;
-        cameraController.SetGameOver();
+        //cameraController.SetGameOver();
     }
 
     public void Goal()
@@ -37,7 +38,8 @@ public class UIManager : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Stage_1");
+        //SceneManager.GetActiveScene().name
     }
 
     public void BackTitke()
