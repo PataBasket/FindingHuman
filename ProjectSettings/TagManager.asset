@@ -8,6 +8,8 @@ TagManager:
   - Goal
   - Barrier
   - Check
+  - Collision_Check
+  - Human
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
-    public float speed = 5.0f;
+    public float Pspeed = 5.0f;
     public float slideSpeed = 2.0f;
     public int jumpCount = 1;
 
@@ -25,7 +25,15 @@ public class Player : MonoBehaviour
     Vector3 generatingPosition;
     int stageCount = 3;
     int nextPosition = 0;
+    int score = 0;
     bool isGenerated = false;
+
+    //アイテム
+    float timeCounter = 0f;
+    bool doublePoints = false;
+    bool transparent = false;
+    bool timeStop = false;
+    int unit = 1;
 
 
     void Start()
@@ -65,7 +73,7 @@ public class Player : MonoBehaviour
         */
 
         //前に進む
-        transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
+        //transform.position += new Vector3(0, 0, Pspeed) * Time.deltaTime;
 
         //現在のX軸の位置を取得
         float posX = transform.position.x;
@@ -164,28 +172,71 @@ public class Player : MonoBehaviour
         }
 
 
+        //アイテム
+        //スコア倍増
+        if(doublePoints == true)
+        {
+            timeCounter += Time.deltaTime;
+            if(timeCounter < 10)
+            {
+                unit = 2;
+            }
+            else
+            {
+                unit = 1;
+                doublePoints = false;
+                timeCounter = 0;
+            }
+        }
+
+        //壁すり抜け
+        if(transparent == true)
+        {
+            timeCounter += Time.deltaTime;
+            if(timeCounter < 10)
+            {
+                playerRigidbody.isKinematic = true;
+            }
+            else
+            {
+                playerRigidbody.isKinematic = false;
+                transparent = false;
+                timeCounter = 0;
+            }
+        }
+
     }
 
-    // checkにぶつかったとき
-    /*
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "DoublePointsItem")
+        {
+            doublePoints = true;
+        }
+
+        if(other.gameObject.name == "TransparentItem")
+        {
+            transparent = true;
+        }
+
+        if(other.gameObject.name == "TimeStopItem")
+        {
+            timeStop = true;
+        }
+    }
+
     void OnTriggerExit(Collider collider)
     {
 
-        if(collider.gameObject.tag == "Check")
+        if(collider.gameObject.tag == "Human")
         {
-            Debug.Log("Generate!");
-            int type = Random.Range(0, 3);
-            nextPosition = 15 * stageCount;
-
-            generatingPosition = new Vector3(0, 0, nextPosition);
-            Debug.Log(nextPosition);
-            Instantiate(stages[type], generatingPosition, Quaternion.identity);
-
-            stageCount++;
-            //isGenerated = true;
+            Destroy(collider.gameObject);
+            score += unit;
+            Debug.Log(score);
         }
     }
-    */
+    
 
 
     //Triggerでない障害物にぶつかったとき
@@ -194,7 +245,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Barrier")
         {
             //速度を0にして進むのを止める
-            speed = 0;
+            Pspeed = 0;
 
             //横移動する速度を0にして左右移動できなくする
             slideSpeed = 0;
@@ -209,6 +260,7 @@ public class Player : MonoBehaviour
             jumpCount = defaultJumpCount;
         }
     }
+
 
 }
 
