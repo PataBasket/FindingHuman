@@ -2,25 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SocialPlatforms;
 
 public class HumanController : MonoBehaviour
 {
     Vector3 initialHumanPosition;
+    public static Animator humanAnimator;
+    public static float humanSpeed = -1.0f;
+    public Transform playerPosition;
+
+    private float timeCounter = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         //initialHumanPosition = this.transform.position;
-  
+        humanAnimator = this.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += new Vector3(0, 0, -1.0f) * Time.deltaTime;
+        this.transform.position += new Vector3(0, 0, humanSpeed) * Time.deltaTime;
+
+        //Debug.Log(this.transform.position.z);
 
         
+        if (playerPosition.transform.position.z - 3 > this.transform.position.z)
+        {
+            Destroy(this.gameObject);
+        }
+
+        if(Player.isAnimated == false)
+        {
+            humanAnimator.enabled = false;
+            //humanAnimator.speed = 0;
+            humanSpeed = -5.0f;
+        }
+        else
+        {
+            humanAnimator.enabled = true;
+            //humanAnimator.speed = 1;
+            humanSpeed = -1.0f;
+        }
+
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

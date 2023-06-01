@@ -23,16 +23,16 @@ public class Player : MonoBehaviour
     //無限生成用
     public GameObject[] stages;
     Vector3 generatingPosition;
-    int stageCount = 3;
     int nextPosition = 0;
     int score = 0;
-    bool isGenerated = false;
+    //bool isGenerated = false;
 
     //アイテム
-    float timeCounter = 0f;
+    private float timeCounter = 0f;
     bool doublePoints = false;
     bool transparent = false;
-    bool timeStop = false;
+    public static bool timeStop = false;
+    public static bool isAnimated = true;
     int unit = 1;
 
 
@@ -201,6 +201,24 @@ public class Player : MonoBehaviour
             {
                 playerRigidbody.isKinematic = false;
                 transparent = false;
+                timeCounter = 0;
+            }
+        }
+
+        //金縛り
+        if (Player.timeStop == true)
+        {
+            timeCounter += Time.deltaTime;
+            if (timeCounter <= 10)
+            {
+                Debug.Log(timeCounter);
+                isAnimated = false;
+            }
+            else if (timeCounter > 10)
+            {
+                Debug.Log("else");
+                Player.timeStop = false;
+                isAnimated = true;
                 timeCounter = 0;
             }
         }
