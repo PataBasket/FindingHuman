@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public GameObject[] stages;
     Vector3 generatingPosition;
     int nextPosition = 0;
-    int score = 0;
+    public static int score = 0;
     //bool isGenerated = false;
 
     //アイテム
