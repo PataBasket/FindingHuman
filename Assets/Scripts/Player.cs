@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public GameObject[] stages;
     Vector3 generatingPosition;
     int nextPosition = 0;
-    public static int score = 0;
+    public static float score = 0;
     //bool isGenerated = false;
 
     //アイテム
@@ -206,21 +206,27 @@ public class Player : MonoBehaviour
         }
 
         //金縛り
-        if (Player.timeStop == true)
+        if (timeStop == true)
         {
             timeCounter += Time.deltaTime;
             if (timeCounter <= 10)
             {
-                Debug.Log(timeCounter);
+                //Debug.Log(timeCounter);
                 isAnimated = false;
             }
             else if (timeCounter > 10)
             {
                 Debug.Log("else");
-                Player.timeStop = false;
+                timeStop = false;
                 isAnimated = true;
                 timeCounter = 0;
             }
+        }
+
+        //お化け界にいる時のスコア
+        if (posX > 30f && score >= 0)
+        {
+            score -= Time.deltaTime;
         }
 
     }
@@ -228,18 +234,22 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "DoublePointsItem")
+        Debug.Log("Hit Item!");
+        if(other.gameObject.name == "DoublePointsItem" || other.gameObject.name == "DoublePointsItem(Clone)")
         {
+            Debug.Log("Hit Item1!");
             doublePoints = true;
         }
 
-        if(other.gameObject.name == "TransparentItem")
+        if(other.gameObject.name == "TransparentItem" || other.gameObject.name == "TransparentItem(Clone)")
         {
+            Debug.Log("Hit Item2!");
             transparent = true;
         }
 
-        if(other.gameObject.name == "TimeStopItem")
+        if(other.gameObject.name == "TimeStopItem" || other.gameObject.name == "TimeStopItem(Clone)")
         {
+            Debug.Log("Hit Item3!");
             timeStop = true;
         }
     }

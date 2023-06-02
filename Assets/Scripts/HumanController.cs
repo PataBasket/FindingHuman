@@ -29,22 +29,29 @@ public class HumanController : MonoBehaviour
         //Debug.Log(this.transform.position.z);
 
         
+        if(humanAnimator != null)
+        {
+            if (Player.isAnimated == false)
+            {
+                humanAnimator.enabled = false;
+                //humanAnimator.speed = 0;
+                humanSpeed = -5.0f;
+            }
+            else if (Player.isAnimated == true)
+            {
+                humanAnimator.enabled = true;
+                //humanAnimator.speed = 1;
+                humanSpeed = -1.0f;
+            }
+        }
+        else if(humanAnimator == null)
+        {
+            Debug.Log("is null");
+        }
+        
         if (playerPosition.transform.position.z - 3 > this.transform.position.z)
         {
             Destroy(this.gameObject);
-        }
-
-        if(Player.isAnimated == false)
-        {
-            humanAnimator.enabled = false;
-            //humanAnimator.speed = 0;
-            humanSpeed = -5.0f;
-        }
-        else
-        {
-            humanAnimator.enabled = true;
-            //humanAnimator.speed = 1;
-            humanSpeed = -1.0f;
         }
 
     }

@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
 
     public void Retry()
     {
+        Player.score = 0;
         SceneManager.LoadScene("Stage_1");
         //SceneManager.GetActiveScene().name
     }
