@@ -304,7 +304,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119608502}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: f531e09e2ad2fb440b4eed7605863143, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: b8f20d5ca50d16143afc11f5e4af6fc1, type: 2}
 --- !u!114 &119608509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,6 +2665,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 543489732}
     m_Modifications:
+    - target: {fileID: 4140827436459617530, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.57
+      objectReference: {fileID: 0}
     - target: {fileID: 4870732831367819771, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
       propertyPath: m_Name
       value: Stage2

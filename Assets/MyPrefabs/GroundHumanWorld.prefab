@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8758989873920027745}
   - component: {fileID: 1089540446830200579}
   m_Layer: 0
-  m_Name: GroundHumanWorld 1
+  m_Name: GroundHumanWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b813cd9cb2c254c4dbc354908ae7d811, type: 2}
+  - {fileID: 2100000, guid: 2d6d886fa1d10444f86f4bb8777dcf9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
