@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class StageGenerator : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject[] LStages;
-    public GameObject[] RStages;
+    [SerializeField] public GameObject player;
+    [SerializeField] public GameObject[] LStages;
+    [SerializeField] public GameObject[] RStages;
 
     Vector3 generatingPosition_L;
     Vector3 generatingPosition_R;
-    int stageCount = 3;
     //int nextPosition = 0;
     public static bool _check = false;
 
@@ -25,7 +24,7 @@ public class StageGenerator : MonoBehaviour
     
     void Update()
     {
-        if(_check == true)
+        if (_check == true)
         {
             Debug.Log("Generate!");
             int Ltype = Random.Range(0, 3);
@@ -38,10 +37,8 @@ public class StageGenerator : MonoBehaviour
             Instantiate(LStages[Ltype], generatingPosition_L, Quaternion.identity);
             Instantiate(RStages[Rtype], generatingPosition_R, Quaternion.identity);
 
-            stageCount++;
             _check = false;
         }
-
 
     }
     /*

@@ -9,7 +9,7 @@ public class StageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(this.transform.position);
     }
 
     // Update is called once per frame
@@ -17,5 +17,6 @@ public class StageController : MonoBehaviour
     {
         //前に進む
         transform.position += new Vector3(0, 0, Pspeed) * Time.deltaTime;
+
     }
 }

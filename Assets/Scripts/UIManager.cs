@@ -25,8 +25,10 @@ public class UIManager : MonoBehaviour
 
     public void Gameover()
     {
-        gameovertext.text = "GAME\nOVER";
+        //gameovertext.text = "GAME\nOVER";
         canvas.enabled = true;
+        //naichilab.RankingLoader.Instance.SendScoreAndShowRanking(Player.score);
+
         //cameraController.SetGameOver();
     }
 

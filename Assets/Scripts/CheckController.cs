@@ -18,12 +18,14 @@ public class CheckController : MonoBehaviour
         
     }
 
+    /*
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Collision!");
+            Debug.Log("Check Collision!");
             StageGenerator._check = true;
         }
     }
+    */
 }

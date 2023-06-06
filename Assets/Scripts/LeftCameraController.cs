@@ -12,7 +12,7 @@ public class LeftCameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("UnityChan");
+        target = GameObject.Find("Ghost_White");
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class LeftCameraController : MonoBehaviour
         {
             if(target.transform.position.x < 30f)
             {
-                this.transform.position = target.transform.position + new Vector3(0, 2, -3);
+                this.transform.position = target.transform.position + new Vector3(0, 7, -7);
                 leftCameraPosition = this.transform.position;
             }
 

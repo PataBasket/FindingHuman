@@ -4,10 +4,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
-    public float Pspeed = 5.0f;
-    public float slideSpeed = 2.0f;
-    public int jumpCount = 1;
+    [SerializeField] private float Pspeed = 5.0f;
+    [SerializeField] public float slideSpeed = 2.0f;
+    [SerializeField] public int jumpCount = 1;
 
     int defaultJumpCount;
 
@@ -21,11 +20,10 @@ public class Player : MonoBehaviour
     Rigidbody playerRigidbody;
 
     //無限生成用
-    public GameObject[] stages;
+    //public GameObject[] stages;
     Vector3 generatingPosition;
     int nextPosition = 0;
     public static float score = 0;
-    //bool isGenerated = false;
 
     //アイテム
     private float timeCounter = 0f;
@@ -42,7 +40,9 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         uiscript = GameObject.Find("Canvas").GetComponent<UIManager>();
         playerRigidbody = GetComponent<Rigidbody>();
-        headCollider = GameObject.Find("HeadCollider");
+
+        //headCollider = GameObject.Find("HeadCollider");
+
 
         //設定したジャンプできる回数を保存
         defaultJumpCount = jumpCount;
@@ -72,8 +72,6 @@ public class Player : MonoBehaviour
         }
         */
 
-        //前に進む
-        //transform.position += new Vector3(0, 0, Pspeed) * Time.deltaTime;
 
         //現在のX軸の位置を取得
         float posX = transform.position.x;
@@ -144,7 +142,7 @@ public class Player : MonoBehaviour
             playerRigidbody.velocity = new Vector3(0, 0, 0);
 
             //上方向に力を加える
-            playerRigidbody.AddForce(new Vector3(0, 6, 0), ForceMode.Impulse);
+            playerRigidbody.AddForce(new Vector3(0, 7, 0), ForceMode.Impulse);
 
             //ジャンプするアニメーションを再生
             animator.SetTrigger("Jump");
@@ -155,6 +153,7 @@ public class Player : MonoBehaviour
 
 
         //スライディングしていたら頭の判定をなくす
+        /*
         if (isSlide == true)
         {
             headCollider.SetActive(false);
@@ -163,6 +162,7 @@ public class Player : MonoBehaviour
         {
             headCollider.SetActive(true);
         }
+        */
 
         //落下時のGameOver判定
         if (transform.position.y <= -3)
@@ -261,10 +261,14 @@ public class Player : MonoBehaviour
         {
             Destroy(collider.gameObject);
             score += unit;
-            Debug.Log(score);
+        }
+
+        if (collider.gameObject.tag == "Check")
+        {
+            StageGenerator._check = true;
+            
         }
     }
-    
 
 
     //Triggerでない障害物にぶつかったとき
