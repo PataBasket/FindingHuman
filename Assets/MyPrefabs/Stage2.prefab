@@ -748,6 +748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundHumanWorld
       objectReference: {fileID: 0}
+    - target: {fileID: 4759214418737543452, guid: 086274e7c874840b49dad6829186c3a8, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 5981989232017762554, guid: 086274e7c874840b49dad6829186c3a8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -890,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6863739289161550557, guid: 5123548bee4ae4927a324e627ccb2b83, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.6267357
+      value: 6.57
       objectReference: {fileID: 0}
     - target: {fileID: 6863739289161550557, guid: 5123548bee4ae4927a324e627ccb2b83, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1132,6 +1136,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4870732831367819772}
     m_Modifications:
+    - target: {fileID: 1189310652991342, guid: 00330848c56cf3e42aefd14a7ebd14c6, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1808238868717486, guid: 00330848c56cf3e42aefd14a7ebd14c6, type: 3}
       propertyPath: m_Name
       value: electrcity box prefab

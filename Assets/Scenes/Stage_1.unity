@@ -2322,10 +2322,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9078366008532524739, guid: da821380be15a45ecbec8b6644b871f1, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1152862371}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da821380be15a45ecbec8b6644b871f1, type: 3}
 --- !u!4 &6535966612828339955 stripped
@@ -2538,10 +2534,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage3
       objectReference: {fileID: 0}
-    - target: {fileID: 2381302393386114182, guid: 173ebddf4766f424faebf4e4ae8dcf7b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 173ebddf4766f424faebf4e4ae8dcf7b, type: 3}
 --- !u!1001 &8036055932793739780
@@ -2665,9 +2657,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 543489732}
     m_Modifications:
-    - target: {fileID: 4140827436459617530, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.57
+    - target: {fileID: 629754043246754723, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270587305114883623, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327424457243626918, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590937996707252244, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
       objectReference: {fileID: 0}
     - target: {fileID: 4870732831367819771, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
       propertyPath: m_Name
@@ -2716,6 +2720,10 @@ PrefabInstance:
     - target: {fileID: 4870732831367819772, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193416760387188912, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40e416426a3ef43e1ab3ff7bad71f9a1, type: 3}

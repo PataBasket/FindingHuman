@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-    public float Pspeed = -5.0f;
+    private float Pspeed = -5.0f;
 
     // Start is called before the first frame update
     void Start()

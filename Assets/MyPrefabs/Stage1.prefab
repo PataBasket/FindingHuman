@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2866662172581086523}
   m_Layer: 0
   m_Name: Stage1
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,10 @@ PrefabInstance:
       value: trashcan prefab (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1305419447455220, guid: 8983c8df5fb12ea4bb76cdf0ef2f9c1b, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787287673974826, guid: 8983c8df5fb12ea4bb76cdf0ef2f9c1b, type: 3}
       propertyPath: m_TagString
       value: Barrier
       objectReference: {fileID: 0}
@@ -149,6 +153,10 @@ PrefabInstance:
       value: phone booth prefab
       objectReference: {fileID: 0}
     - target: {fileID: 1783081465637762, guid: b995d8a7dcf811740b66ae5cf81e4fa6, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926710114752856, guid: b995d8a7dcf811740b66ae5cf81e4fa6, type: 3}
       propertyPath: m_TagString
       value: Barrier
       objectReference: {fileID: 0}
@@ -432,6 +440,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Barrier
       objectReference: {fileID: 0}
+    - target: {fileID: 1871370714446290, guid: 3f3f0ad0013c05f478f38f3920e05817, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 4602628002107680, guid: 3f3f0ad0013c05f478f38f3920e05817, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -692,6 +704,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundHumanWorld
       objectReference: {fileID: 0}
+    - target: {fileID: 4759214418737543452, guid: 086274e7c874840b49dad6829186c3a8, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 5981989232017762554, guid: 086274e7c874840b49dad6829186c3a8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -759,6 +775,10 @@ PrefabInstance:
       value: trashcan prefab
       objectReference: {fileID: 0}
     - target: {fileID: 1305419447455220, guid: 8983c8df5fb12ea4bb76cdf0ef2f9c1b, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787287673974826, guid: 8983c8df5fb12ea4bb76cdf0ef2f9c1b, type: 3}
       propertyPath: m_TagString
       value: Barrier
       objectReference: {fileID: 0}
@@ -961,6 +981,10 @@ PrefabInstance:
       value: Mail_box prefab (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1016869591269748, guid: 3f3f0ad0013c05f478f38f3920e05817, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871370714446290, guid: 3f3f0ad0013c05f478f38f3920e05817, type: 3}
       propertyPath: m_TagString
       value: Barrier
       objectReference: {fileID: 0}

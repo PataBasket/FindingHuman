@@ -75,6 +75,16 @@ public class HumanController : MonoBehaviour
             {
                 transform.DOJump(new Vector3(0, 0, 2.5f), 2, 1, 2).SetLink(this.gameObject);
             }
+
+            if (other.gameObject.name == "CollisionCheck4")
+            {
+                transform.DOMove(this.transform.position + new Vector3(1f, 0, 0), 1f).SetLink(this.gameObject);
+            }
+
+            if (other.gameObject.name == "CollisionCheck5")
+            {
+                transform.DOMove(this.transform.position + new Vector3(-1f, 0, 0), 1f).SetLink(this.gameObject);
+            }
         }
     }
     
