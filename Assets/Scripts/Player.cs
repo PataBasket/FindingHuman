@@ -26,12 +26,16 @@ public class Player : MonoBehaviour
     public static float score = 0;
 
     //アイテム
-    private float timeCounter = 0f;
+    private float timeCounter = 10f;
     bool doublePoints = false;
     bool transparent = false;
     public static bool timeStop = false;
     public static bool isAnimated = true;
     int unit = 1;
+    [SerializeField] private Slider _itemSlider;
+    [SerializeField] private GameObject itemSliderPosition;
+    [SerializeField] private Camera targetLCamera;
+    [SerializeField] private Camera targetRCamera;
 
 
     void Start()
@@ -53,26 +57,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        /*
-        //ストップ
-        if (Input.GetKey(KeyCode.Space))
-        {
-            playerRigidbody.velocity = new Vector3(0, 0, 0);
-            animator.SetBool("Pose", true);
-            playerRigidbody.isKinematic = true;
-        }
-
         
-        if (!Input.GetKey(KeyCode.Space))
-        {
-            playerRigidbody.isKinematic = false;
-            animator.SetBool("Pose", false);
-            //前に進む
-            transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
-        }
-        */
-
-
         //現在のX軸の位置を取得
         float posX = transform.position.x;
         float posZ = transform.position.z;
@@ -120,14 +105,8 @@ public class Player : MonoBehaviour
         }
 
         //アニメーション
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            animator.SetBool("Slide", true);
-        }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            animator.SetBool("Slide", false);
-        }
+
+
 
         //現在再生されているアニメーション情報を取得
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -152,17 +131,7 @@ public class Player : MonoBehaviour
         }
 
 
-        //スライディングしていたら頭の判定をなくす
-        /*
-        if (isSlide == true)
-        {
-            headCollider.SetActive(false);
-        }
-        else
-        {
-            headCollider.SetActive(true);
-        }
-        */
+        
 
         //落下時のGameOver判定
         if (transform.position.y <= -3)
@@ -173,16 +142,34 @@ public class Player : MonoBehaviour
 
 
         //アイテム
-        //スコア倍増
-        if(doublePoints == true)
+        /*
+        var sliderWorldPos = this.transform.position;
+        
+        if(posX < 30)
         {
-            timeCounter += Time.deltaTime;
-            if(timeCounter < 10)
+            var sliderScreenPos = targetLCamera.WorldToScreenPoint(sliderWorldPos) + new Vector3(0, 1, 0);
+        }
+        
+        else if(posX >= 30)
+        {
+            var sliderScreenPos = targetRCamera.WorldToScreenPoint(sliderWorldPos) + new Vector3(0, 1, 0);
+        }
+        */
+        
+
+        //スコア倍増
+        if (doublePoints == true)
+        {
+            timeCounter -= Time.deltaTime;
+            if(timeCounter >= 0)
             {
+                //timeCounter -= Time.deltaTime;
                 unit = 2;
+                _itemSlider.value = timeCounter/10;
             }
             else
             {
+                _itemSlider.value = 100;
                 unit = 1;
                 doublePoints = false;
                 timeCounter = 0;
@@ -192,13 +179,16 @@ public class Player : MonoBehaviour
         //壁すり抜け
         if(transparent == true)
         {
-            timeCounter += Time.deltaTime;
-            if(timeCounter < 10)
+            timeCounter -= Time.deltaTime;
+            if(timeCounter >= 0)
             {
+                //timeCounter -= Time.deltaTime;
                 playerRigidbody.isKinematic = true;
+                _itemSlider.value = timeCounter/10;
             }
             else
             {
+                _itemSlider.value = 100;
                 playerRigidbody.isKinematic = false;
                 transparent = false;
                 timeCounter = 0;
@@ -208,15 +198,16 @@ public class Player : MonoBehaviour
         //金縛り
         if (timeStop == true)
         {
-            timeCounter += Time.deltaTime;
-            if (timeCounter <= 10)
+            timeCounter -= Time.deltaTime;
+            if (timeCounter >= 0)
             {
                 //Debug.Log(timeCounter);
                 isAnimated = false;
+                _itemSlider.value = timeCounter/10;
             }
-            else if (timeCounter > 10)
+            else if (timeCounter < 0)
             {
-                Debug.Log("else");
+                _itemSlider.value = 100;
                 timeStop = false;
                 isAnimated = true;
                 timeCounter = 0;
@@ -226,7 +217,7 @@ public class Player : MonoBehaviour
         //お化け界にいる時のスコア
         if (posX > 30f && score >= 0)
         {
-            score -= Time.deltaTime;
+            score -= Time.deltaTime*0.5f;
         }
 
     }

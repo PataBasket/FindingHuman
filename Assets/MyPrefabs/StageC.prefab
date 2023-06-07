@@ -117,7 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651ec93ab8f154a86b500116de95791d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pspeed: -5
 --- !u!65 &3996368201791358313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1999,6 +1998,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048299260256856, guid: de205966855be504a95152ab56d0896e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64538595148354386, guid: de205966855be504a95152ab56d0896e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
