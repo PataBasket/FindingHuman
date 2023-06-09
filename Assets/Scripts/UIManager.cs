@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         Debug.Log("start again");
+        Time.timeScale = 1;
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
         //cameraController = GameObject.Find("Left Main Camera").GetComponent<CameraController>();
@@ -25,8 +26,9 @@ public class UIManager : MonoBehaviour
 
     public void Gameover()
     {
-        //gameovertext.text = "GAME\nOVER";
+        gameovertext.text = "GAME\nOVER";
         canvas.enabled = true;
+        Time.timeScale = 0;
         //naichilab.RankingLoader.Instance.SendScoreAndShowRanking(Player.score);
 
         //cameraController.SetGameOver();

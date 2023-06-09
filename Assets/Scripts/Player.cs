@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
             playerRigidbody.velocity = new Vector3(0, 0, 0);
 
             //上方向に力を加える
-            playerRigidbody.AddForce(new Vector3(0, 6.3f, 0), ForceMode.Impulse);
+            playerRigidbody.AddForce(new Vector3(0, 6.2f, 0), ForceMode.Impulse);
 
             
             //残りのジャンプ回数を減らす
