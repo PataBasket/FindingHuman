@@ -26,16 +26,25 @@ public class Player : MonoBehaviour
     public static float score = 0;
 
     //アイテム
-    private float timeCounter = 10f;
-    bool doublePoints = false;
-    bool transparent = false;
+    private float timeCounter_doubleScore = 10f;
+    private float timeCounter_transparent = 10f;
+    private float timeCounter_timeStop = 10f;
+    private bool doublePoints = false;
+    private bool transparent = false;
+    private bool isActive = false;
     public static bool timeStop = false;
     public static bool isAnimated = true;
-    int unit = 1;
+    public static int unit = 1;
     [SerializeField] private Slider _itemSlider;
     [SerializeField] private GameObject itemSliderPosition;
     [SerializeField] private Camera targetLCamera;
     [SerializeField] private Camera targetRCamera;
+
+    //やられた時の音
+    [SerializeField] private AudioClip[] screamAudios;
+    [SerializeField] private AudioClip teleportAudio;
+    private AudioSource audioSource;
+    private int i;
 
 
     void Start()
@@ -51,6 +60,8 @@ public class Player : MonoBehaviour
         //設定したジャンプできる回数を保存
         defaultJumpCount = jumpCount;
 
+        audioSource = this.GetComponent<AudioSource>();
+        
     }
 
 
@@ -102,6 +113,8 @@ public class Player : MonoBehaviour
             {
                 transform.position = new Vector3(posX - 60, 0, posZ);
             }
+
+            audioSource.PlayOneShot(teleportAudio);
         }
 
         //アニメーション
@@ -121,11 +134,9 @@ public class Player : MonoBehaviour
             playerRigidbody.velocity = new Vector3(0, 0, 0);
 
             //上方向に力を加える
-            playerRigidbody.AddForce(new Vector3(0, 7, 0), ForceMode.Impulse);
+            playerRigidbody.AddForce(new Vector3(0, 6.3f, 0), ForceMode.Impulse);
 
-            //ジャンプするアニメーションを再生
-            animator.SetTrigger("Jump");
-
+            
             //残りのジャンプ回数を減らす
             jumpCount--;
         }
@@ -160,105 +171,169 @@ public class Player : MonoBehaviour
         //スコア倍増
         if (doublePoints == true)
         {
-            timeCounter -= Time.deltaTime;
-            if(timeCounter >= 0)
+            //他のアイテムをリセット
+            if(timeCounter_doubleScore > timeCounter_transparent)
             {
-                //timeCounter -= Time.deltaTime;
-                unit = 2;
-                _itemSlider.value = timeCounter/10;
+                timeCounter_transparent = 0;
             }
-            else
+            if(timeCounter_doubleScore > timeCounter_timeStop)
+            {
+                timeCounter_timeStop = 0;
+            }
+            
+            timeCounter_doubleScore -= Time.deltaTime;
+            if(timeCounter_doubleScore > 0)
+            {
+                unit = 2;
+                _itemSlider.value = timeCounter_doubleScore/10;
+                
+            }
+            else if (timeCounter_doubleScore <= 0)
             {
                 _itemSlider.value = 100;
                 unit = 1;
                 doublePoints = false;
-                timeCounter = 0;
+                timeCounter_doubleScore = 10f;
+                
             }
+        }
+        else
+        {
+            timeCounter_doubleScore = 10f;
         }
 
         //壁すり抜け
         if(transparent == true)
         {
-            timeCounter -= Time.deltaTime;
-            if(timeCounter >= 0)
+            //他のアイテムをリセット
+            if(timeCounter_transparent > timeCounter_timeStop)
             {
-                //timeCounter -= Time.deltaTime;
-                playerRigidbody.isKinematic = true;
-                _itemSlider.value = timeCounter/10;
+                timeCounter_timeStop = 0;
             }
-            else
+            if(timeCounter_transparent > timeCounter_doubleScore)
+            {
+                timeCounter_doubleScore = 0;
+            }
+            
+            timeCounter_transparent -= Time.deltaTime;
+            if(timeCounter_transparent > 0)
+            {
+                playerRigidbody.isKinematic = true;
+                _itemSlider.value = timeCounter_transparent / 10;
+                
+            }
+            else if (timeCounter_transparent <= 0)
             {
                 _itemSlider.value = 100;
                 playerRigidbody.isKinematic = false;
                 transparent = false;
-                timeCounter = 0;
+                timeCounter_transparent = 10f;
+                
             }
+        }
+        else
+        {
+            timeCounter_transparent = 10f;
         }
 
         //金縛り
         if (timeStop == true)
         {
-            timeCounter -= Time.deltaTime;
-            if (timeCounter >= 0)
+            //他のアイテムをリセット
+            if(timeCounter_timeStop > timeCounter_transparent)
             {
-                //Debug.Log(timeCounter);
-                isAnimated = false;
-                _itemSlider.value = timeCounter/10;
+                timeCounter_transparent = 0;
             }
-            else if (timeCounter < 0)
+            if (timeCounter_timeStop > timeCounter_doubleScore)
             {
-                _itemSlider.value = 100;
+                timeCounter_doubleScore = 0;
+            }
+
+            
+
+            timeCounter_timeStop -= Time.deltaTime;
+            if (timeCounter_timeStop > 0)
+            {
+                isAnimated = false;
+                _itemSlider.value = timeCounter_timeStop / 10;
+               
+            }
+            else if (timeCounter_timeStop <= 0)
+            {
+                _itemSlider.value = 1;
                 timeStop = false;
                 isAnimated = true;
-                timeCounter = 0;
+                timeCounter_timeStop = 10f;
             }
+        }
+        else
+        {
+            timeCounter_timeStop = 10f;
         }
 
         //お化け界にいる時のスコア
         if (posX > 30f && score >= 0)
         {
-            score -= Time.deltaTime*0.5f;
+            score -= Time.deltaTime*0.3f;
         }
 
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
+        //アイテムとぶつかったとき
         Debug.Log("Hit Item!");
-        if(other.gameObject.name == "DoublePointsItem" || other.gameObject.name == "DoublePointsItem(Clone)")
+        if(collider.gameObject.tag == "doublePointsItem")
         {
             Debug.Log("Hit Item1!");
             doublePoints = true;
+            timeCounter_doubleScore = 10f;
+            Destroy(collider.gameObject);
         }
 
-        if(other.gameObject.name == "TransparentItem" || other.gameObject.name == "TransparentItem(Clone)")
+        if(collider.gameObject.tag == "transparentItem")
         {
             Debug.Log("Hit Item2!");
             transparent = true;
+            timeCounter_transparent = 10f;
+            Destroy(collider.gameObject);
         }
 
-        if(other.gameObject.name == "TimeStopItem" || other.gameObject.name == "TimeStopItem(Clone)")
+        if(collider.gameObject.tag == "timeStopItem")
         {
             Debug.Log("Hit Item3!");
             timeStop = true;
+            timeCounter_timeStop = 10f;
+
+            Destroy(collider.gameObject);
         }
+
+        
     }
 
     void OnTriggerExit(Collider collider)
     {
-
-        if(collider.gameObject.tag == "Human")
-        {
-            Destroy(collider.gameObject);
-            score += unit;
-        }
-
         if (collider.gameObject.tag == "Check")
         {
             StageGenerator._check = true;
             
         }
+
+        //Humanとぶつかったとき
+        if (collider.gameObject.tag == "Human")
+        {
+            Destroy(collider.gameObject);
+            score += unit;
+
+            if (screamAudios != null)
+            {
+                i = Random.Range(0, screamAudios.Length);
+            }
+            audioSource.PlayOneShot(screamAudios[i]);
+        }
+
+
     }
 
 
@@ -273,7 +348,6 @@ public class Player : MonoBehaviour
             //横移動する速度を0にして左右移動できなくする
             slideSpeed = 0;
 
-            animator.SetBool("Dead", true);
             //UIの表示
             uiscript.Gameover();
         }

@@ -14,7 +14,7 @@ public class ItemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomGenerator = Random.Range(0, 3);
+        randomGenerator = Random.Range(0, 1);
 
         if(randomGenerator == 0)
         {

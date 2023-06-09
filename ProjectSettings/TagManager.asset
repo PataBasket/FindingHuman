@@ -10,6 +10,9 @@ TagManager:
   - Check
   - Collision_Check
   - Human
+  - doublePointsItem
+  - timeStopItem
+  - transparentItem
   layers:
   - Default
   - TransparentFX

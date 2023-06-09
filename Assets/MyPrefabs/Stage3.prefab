@@ -54,7 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651ec93ab8f154a86b500116de95791d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pspeed: -5
 --- !u!1 &5439924619637612719
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +309,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5881066302600477981, guid: 4e8f0baeb39ac4411b625c98f2e8650f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5293
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881066302600477981, guid: 4e8f0baeb39ac4411b625c98f2e8650f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.24
       objectReference: {fileID: 0}
@@ -319,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5881066302600477981, guid: 4e8f0baeb39ac4411b625c98f2e8650f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.06
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 5881066302600477981, guid: 4e8f0baeb39ac4411b625c98f2e8650f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -631,11 +634,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2381302393386114177}
     m_Modifications:
+    - target: {fileID: 1507145481464020, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 1520711273483040, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
       propertyPath: m_Name
       value: Big_trash_bin prefab
       objectReference: {fileID: 0}
     - target: {fileID: 1520711273483040, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631846186159236, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
       propertyPath: m_TagString
       value: Barrier
       objectReference: {fileID: 0}

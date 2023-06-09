@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SocialPlatforms;
+using static UnityEngine.UI.CanvasScaler;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class HumanController : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class HumanController : MonoBehaviour
     public static Animator humanAnimator;
     public static float humanSpeed = -1.0f;
     public Transform playerPosition;
+    
 
     private float timeCounter = 0;
 
@@ -18,6 +21,7 @@ public class HumanController : MonoBehaviour
     {
         //initialHumanPosition = this.transform.position;
         humanAnimator = this.GetComponent<Animator>();
+
         
     }
 
@@ -56,7 +60,7 @@ public class HumanController : MonoBehaviour
 
     }
 
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Collision_Check")
@@ -73,7 +77,7 @@ public class HumanController : MonoBehaviour
 
             if(other.gameObject.name == "CollisionCheck3")
             {
-                transform.DOJump(new Vector3(0, 0, 2.5f), 2, 1, 2).SetLink(this.gameObject);
+                transform.DOJump(this.transform.position, 1, 1, 1.5f).SetLink(this.gameObject);
             }
 
             if (other.gameObject.name == "CollisionCheck4")
@@ -83,7 +87,7 @@ public class HumanController : MonoBehaviour
 
             if (other.gameObject.name == "CollisionCheck5")
             {
-                transform.DOMove(this.transform.position + new Vector3(-1f, 0, 0), 1f).SetLink(this.gameObject);
+                transform.DOMove(this.transform.position + new Vector3(-1.3f, 0, 0), 1f).SetLink(this.gameObject);
             }
         }
     }

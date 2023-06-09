@@ -22,7 +22,7 @@ public class RightCameraController : MonoBehaviour
         {
             if (target.transform.position.x > 30f)
             {
-                this.transform.position = target.transform.position + new Vector3(0, 7, -7);
+                this.transform.position = new Vector3(target.transform.position.x, 7, target.transform.position.z - 7);
                 rightCameraPosition = this.transform.position;
             }
 
