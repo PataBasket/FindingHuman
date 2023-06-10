@@ -31,8 +31,7 @@ public class Player : MonoBehaviour
     private float timeCounter_timeStop = 10f;
     private bool doublePoints = false;
     private bool transparent = false;
-    private bool isActive = false;
-    public static bool timeStop = false;
+    private bool timeStop = false;
     public static bool isAnimated = true;
     public static int unit = 1;
     [SerializeField] private Slider _itemSlider;
@@ -54,13 +53,12 @@ public class Player : MonoBehaviour
         uiscript = GameObject.Find("Canvas").GetComponent<UIManager>();
         playerRigidbody = GetComponent<Rigidbody>();
 
-        //headCollider = GameObject.Find("HeadCollider");
-
 
         //設定したジャンプできる回数を保存
         defaultJumpCount = jumpCount;
 
         audioSource = this.GetComponent<AudioSource>();
+
         
     }
 
@@ -283,7 +281,6 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         //アイテムとぶつかったとき
-        Debug.Log("Hit Item!");
         if(collider.gameObject.tag == "doublePointsItem")
         {
             Debug.Log("Hit Item1!");

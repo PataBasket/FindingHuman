@@ -9,7 +9,7 @@ public class StageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(this.transform.position);
+
     }
 
     // Update is called once per frame

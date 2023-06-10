@@ -10,7 +10,6 @@ public class StageGenerator : MonoBehaviour
 
     Vector3 generatingPosition_L;
     Vector3 generatingPosition_R;
-    //int nextPosition = 0;
     public static bool _check = false;
 
 
@@ -29,11 +28,9 @@ public class StageGenerator : MonoBehaviour
             Debug.Log("Generate!");
             int Ltype = Random.Range(0, 3);
             int Rtype = Random.Range(0, 3);
-            //nextPosition = 15 * stageCount;
 
             generatingPosition_L = new Vector3(0, 0, 30);
             generatingPosition_R = new Vector3(60, 0, 30);
-            //Debug.Log(15);
             Instantiate(LStages[Ltype], generatingPosition_L, Quaternion.identity);
             Instantiate(RStages[Rtype], generatingPosition_R, Quaternion.identity);
 
@@ -41,10 +38,5 @@ public class StageGenerator : MonoBehaviour
         }
 
     }
-    /*
-    public void StageGenerate()
-    {
-        
-    }
-    */
+    
 }
