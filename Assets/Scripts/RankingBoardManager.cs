@@ -20,12 +20,14 @@ public class RankingBoardManager : MonoBehaviour
     public void Retry()
     {
         Player.score = 0;
+        Player.isAnimated = true;
         SceneManager.LoadScene("Stage_1");
     }
 
     public void BackTitle()
     {
         Player.score = 0;
+        Player.isAnimated = true;
         SceneManager.LoadScene("Title");
     }
 }

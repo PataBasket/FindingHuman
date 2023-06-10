@@ -32,8 +32,10 @@ public class Player : MonoBehaviour
     private bool doublePoints = false;
     private bool transparent = false;
     private bool timeStop = false;
+
     public static bool isAnimated = true;
-    public static int unit = 1;
+    private int unit = 1;
+
     [SerializeField] private Slider _itemSlider;
     [SerializeField] private GameObject itemSliderPosition;
     [SerializeField] private Camera targetLCamera;

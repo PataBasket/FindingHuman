@@ -38,17 +38,7 @@ public class UIManager : MonoBehaviour
         canvas.enabled = true;
     }
 
-    public void Retry()
-    {
-        Player.score = 0;
-        SceneManager.LoadScene("Stage_1");
-        //SceneManager.GetActiveScene().name
-    }
-
-    public void BackTitke()
-    {
-        SceneManager.LoadScene("Title");
-    }
+    
 
 
 }

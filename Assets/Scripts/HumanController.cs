@@ -10,7 +10,7 @@ public class HumanController : MonoBehaviour
 {
     Vector3 initialHumanPosition;
     public static Animator humanAnimator;
-    public static float humanSpeed = -1.0f;
+    public static float humanSpeed = -2.0f;
     public Transform playerPosition;
     
 
@@ -45,7 +45,7 @@ public class HumanController : MonoBehaviour
             {
                 humanAnimator.enabled = true;
                 //humanAnimator.speed = 1;
-                humanSpeed = -1.0f;
+                humanSpeed = -2.0f;
             }
         }
         else if(humanAnimator == null)
