@@ -29,15 +29,27 @@ public class TitleUIManager : MonoBehaviour
             _instruction[0].SetActive(true);
             screenCounter++;
         }
-        else if ((isReading == true && screenCounter == 1) && Input.GetKeyDown(KeyCode.Return))
+        else if ((isReading == true && screenCounter == 1) && Input.GetKeyDown(KeyCode.P))
         {
             _instruction[0].SetActive(false);
             _instruction[1].SetActive(true);
             screenCounter++;
         }
-        else if ((isReading == true && screenCounter == 2) && Input.GetKeyDown(KeyCode.Return))
+        else if ((isReading == true && screenCounter == 2) && Input.GetKeyDown(KeyCode.P))
         {
             _instruction[1].SetActive(false);
+            _instruction[2].SetActive(true);
+            screenCounter++;
+        }
+        else if ((isReading == true && screenCounter == 3) && Input.GetKeyDown(KeyCode.P))
+        {
+            _instruction[2].SetActive(false);
+            _instruction[3].SetActive(true);
+            screenCounter++;
+        }
+        else if ((isReading == true && screenCounter == 4) && Input.GetKeyDown(KeyCode.P))
+        {
+            _instruction[3].SetActive(false);
             _instruction[0].SetActive(true);
             screenCounter = 0;
             LeaveInstruction();

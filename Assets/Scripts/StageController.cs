@@ -18,5 +18,10 @@ public class StageController : MonoBehaviour
         //前に進む
         transform.position += new Vector3(0, 0, Pspeed) * Time.deltaTime;
 
+        if(this.transform.position.z < -17)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 }

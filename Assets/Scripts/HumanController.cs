@@ -37,14 +37,14 @@ public class HumanController : MonoBehaviour
         {
             if (Player.isAnimated == false)
             {
-                humanAnimator.enabled = false;
-                //humanAnimator.speed = 0;
+                //humanAnimator.enabled = false;
+                humanAnimator.speed = 0;
                 humanSpeed = -5.0f;
             }
             else if (Player.isAnimated == true)
             {
-                humanAnimator.enabled = true;
-                //humanAnimator.speed = 1;
+                //humanAnimator.enabled = true;
+                humanAnimator.speed = 1;
                 humanSpeed = -2.0f;
             }
         }
