@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private bool doublePoints = false;
     private bool transparent = false;
     private bool timeStop = false;
+    [SerializeField] private AudioClip itemTimer;
 
     public static bool isAnimated = true;
     private int unit = 1;
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
         float posZ = transform.position.z;
 
         //右アローキーを押した時
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             if (posX < 1.8f)
             {
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
         }
 
         //左アローキーを押した時
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             if (posX > -1.8f && posX < 30f)
             {
@@ -128,7 +129,7 @@ public class Player : MonoBehaviour
         bool isSlide = stateInfo.IsName("Base Layer.Slide");
 
         //ジャンプ
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount > 0)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) && jumpCount > 0) || (Input.GetKeyDown(KeyCode.W) && jumpCount > 0))
         {
             //速度を初期化
             playerRigidbody.velocity = new Vector3(0, 0, 0);

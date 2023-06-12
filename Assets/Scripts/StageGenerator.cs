@@ -29,8 +29,8 @@ public class StageGenerator : MonoBehaviour
             int Ltype = Random.Range(0, 3);
             int Rtype = Random.Range(0, 3);
 
-            generatingPosition_L = new Vector3(0, 0, 30);
-            generatingPosition_R = new Vector3(60, 0, 30);
+            generatingPosition_L = new Vector3(0, 0, 59.9f);
+            generatingPosition_R = new Vector3(60, 0, 59.9f);
             Instantiate(LStages[Ltype], generatingPosition_L, Quaternion.identity);
             Instantiate(RStages[Rtype], generatingPosition_R, Quaternion.identity);
 

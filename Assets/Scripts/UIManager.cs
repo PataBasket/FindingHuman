@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         Debug.Log("start again");
-        //Time.timeScale = 1;
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
         //cameraController = GameObject.Find("Left Main Camera").GetComponent<CameraController>();
@@ -21,6 +20,8 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        
+
 
     }
 

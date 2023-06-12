@@ -67,12 +67,12 @@ public class HumanController : MonoBehaviour
         {
             if(other.gameObject.name == "CollisionCheck1")
             {
-                transform.DOMove(this.transform.position + new Vector3(2, 0, 0), 1f).SetLink(this.gameObject);
+                transform.DOMove(this.transform.position + new Vector3(1.2f, 0, 0), 1f).SetLink(this.gameObject);
             }
 
             if(other.gameObject.name == "CollisionCheck2")
             {
-                transform.DOMove(this.transform.position + new Vector3(-2, 0, 0), 1f).SetLink(this.gameObject);
+                transform.DOMove(this.transform.position + new Vector3(-1.2f, 0, 0), 1f).SetLink(this.gameObject);
             }
 
             if(other.gameObject.name == "CollisionCheck3")
@@ -88,6 +88,22 @@ public class HumanController : MonoBehaviour
             if (other.gameObject.name == "CollisionCheck5")
             {
                 transform.DOMove(this.transform.position + new Vector3(-1.3f, 0, 0), 1f).SetLink(this.gameObject);
+            }
+
+            if (other.gameObject.name == "CollisionCheck6")
+            {
+                int RightorLeft = Random.Range(0, 2);
+                if(RightorLeft == 0)
+                {
+                    float moveLeft = Random.Range(-1.6f, -0.5f);
+                    transform.DOMove(this.transform.position + new Vector3(moveLeft, 0, 0), 1f).SetLink(this.gameObject);
+                }
+                else if(RightorLeft == 1)
+                {
+                    float moveRight = Random.Range(0.5f, 1.6f);
+                    transform.DOMove(this.transform.position + new Vector3(moveRight, 0, 0), 1f).SetLink(this.gameObject);
+                }
+                
             }
         }
     }
